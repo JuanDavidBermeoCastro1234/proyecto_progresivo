@@ -1,40 +1,33 @@
-// import Image from "next/image";
-// "use client";
-
-// import Link from "next/link";
-// import { useEffect,useState } from "react";
-
-// export default function Home(){
-
-// }
-
-// app/page.tsx
 "use client";
 
 import { useState } from "react";
 
 export default function Home() {
-  // guarda lo qeu escribe 
+  // guarda el nombre de la clase
   const [className, setClassName] = useState("");
-  // guarda el nombre
+  // guarda los atributos de la clase 
   const [attributes, setAttributes] = useState("");
   // guarda la clase
   const [createdClass, setCreatedClass] = useState<any>(null);
-
+// esto lo que hace es tomar los atributos escritos por el usuarios separarlos por comas, volverlosas arrays con map separandolos por name, type
+// despues le  quita os espacios en blanco al final con trim con split los separa por dos puntos el atributo y el tipo, // name = "nombre"
+// type = "string y los retorna de igual manera name, type 
   const handleCreate = () => {
     const attrList = attributes.split(",").map((attr) => {
       const [name, type] = attr.trim().split(":");
       return { name, type };
     });
-
+// esto crea la clase con el nombre que el usuario le da y los atributosque el usuari escribio ya procesados en attrlist
     const newClass = {
       name: className,
       attributes: attrList,
-    };
+    };   
 
+    // ejecuta el cambio de estado ya imortado y definido mediante usestate y le pasa la clase creada newclas para hacer el respectivo cambio de estado 
     setCreatedClass(newClass);
   };
 
+  // esta es la creacion de html directamente con jsx y que se le añadieron en este caso propiedades directamente mediante twilbin en vez de css un poco mas facil
   return (
     <main className="p-4 max-w-xl mx-auto">
       <h1 className="text-2xl font-bold mb-4">Creador de Clases</h1>
