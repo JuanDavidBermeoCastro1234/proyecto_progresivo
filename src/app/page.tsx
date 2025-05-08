@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 export default function Home() {
   // guarda el nombre de la clase
@@ -60,6 +61,12 @@ export default function Home() {
           <pre>{JSON.stringify(createdClass, null, 2)}</pre>
         </div>
       )}
+
+        <Link href="render">
+      <button className="render">hola</button>
+        </Link>
     </main>
   );
 }
+
+
